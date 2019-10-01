@@ -1,0 +1,66 @@
+<main>
+  <div class="position-relative">
+    <section class="section section-lg section-shaped no-section-bottom">
+      <div class="container align-items-center py-sm">
+        <div class="row pb-3">
+          <h2 class="col-md-9">
+            <span>Listagem de Produtos</span>
+          </h2>
+          <div class="col-md-3">
+              <button type="button" class="btn btn-primary btn-block btn-height" [routerLink]="['/produtos/cadastro']" >Novo Produto</button>
+          </div>
+        </div>
+        <table class="table">
+          <!-- <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead> -->
+          <tbody>
+            <tr *ngFor="let produto of produtos">
+              <td class="col-10">
+                <div>
+                  <div class="d-flex">
+                    <div class="col-9">{{ produto.nome }}</div>
+                    <div class="col-3 text-right">{{ produto.preco | currency:"BRL":true }}</div>
+                  </div>
+                  <div class="col-12 text-justify pt-1 text-muted text-desc">{{ produto.descricao }}</div>
+                </div>
+              </td>
+              <td class="col-1">
+                <a class="btn btn-icon btn-2 btn-default"  [routerLink]="[produto.uid, 'editar']" >
+                  <i class="fa fa-edit"></i>
+                </a>
+              </td>
+              <td class="col-1">
+                <button class="btn btn-icon btn-2 btn-danger" type="button" (click) = "open(classic, produto.uid)" >
+                  <i class="fa fa-remove"></i>
+                </button>
+                <ng-template #classic let-c="close" let-d="dismiss">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h6 class="modal-title" id="modal-title-default">Exclusão de Produto</h6>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d(false)">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Confirma a exclusão do produto {{ produto.nome }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="col-6 btn btn-outline-danger" data-dismiss="modal" (click)="c(false)">Cancelar</button>
+                      <button type="button" class="col-6 btn btn-primary" (click)="c(true)">Confirmar</button>
+                    </div>
+                  </div>
+                </ng-template>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</main>

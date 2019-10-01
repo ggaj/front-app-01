@@ -1,0 +1,12 @@
+.btn-height{
+    height: 100% !important;
+}
+
+.text-desc{
+    font-size: 0.9em;
+}
+
+.no-section-bottom{
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}

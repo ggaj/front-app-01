@@ -1,0 +1,10 @@
+<div *ngFor="let message of messages">
+  <ngb-alert [type]="message.type"  (click)="close(message)" >
+    <ng-container *ngIf="message.icon">
+      <div class="alert-inner--icon">
+          <i class="{{message.icon}}"></i>
+      </div>
+    </ng-container>
+    <span class="alert-inner--text">  <strong>{{ message.strong }} </strong>{{ message.message }}</span>
+  </ngb-alert>
+</div>

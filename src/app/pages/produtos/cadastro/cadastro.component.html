@@ -1,0 +1,48 @@
+<main>
+    <div class="position-relative">
+      <section class="section section-lg section-hero section-shaped">
+        <div class="container align-items-center py-sm">
+          <app-alert></app-alert>
+          <h2>
+            <span>Cadastro de Produtos</span>
+          </h2>
+          <div>
+            <form [formGroup]="cadastroProdutoForm" (ngSubmit)="onSbmit()">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="inputNome" placeholder="Nome" formControlName="nome" [ngClass]="{ 'is-invalid' : enviado && cadastroProdutoForm.controls.nome.invalid }">
+                    <div *ngIf="enviado && cadastroProdutoForm.controls.preco.invalid" class="invalid-feedback">
+                        Informe o nome
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="inputPreco" placeholder="Preço" formControlName="preco" [ngClass]="{ 'is-invalid' : enviado && cadastroProdutoForm.controls.preco.invalid }">
+                    <div *ngIf="enviado && cadastroProdutoForm.controls.preco.invalid" class="invalid-feedback">
+                        Informe o preço
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-10">
+                  <div class="form-group">
+                    <textarea class="form-control" id="inputDescricao" rows="2" placeholder="Descrição" formControlName="descricao"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-2 mb-1">
+                  <button [disabled]="loading" type="button" class="btn btn-primary btn-block btn-height" (click)="salvarProdutos()">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Salvar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
