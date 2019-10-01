@@ -12,7 +12,7 @@ app.use(cors())
 app.use(express.static('www'));
 
 app.route('/*').get(function(req, res) { 
-    return res.sendFile(path.join(__dirname, '/dist', 'index.html'));
+    return res.sendFile(path.join(__dirname, '/www', 'index.html'));
 });
 
 app.all('*', function(req, res, next) {
